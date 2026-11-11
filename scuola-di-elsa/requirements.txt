@@ -1,0 +1,5 @@
+starlette>=0.40
+uvicorn>=0.30
+requests>=2.31
+beautifulsoup4>=4.12
+itsdangerous>=2.1

@@ -1,0 +1,23 @@
+# Render "Blueprint": crea il servizio web gratuito con un clic.
+services:
+  - type: web
+    name: scuola-di-elsa
+    runtime: docker
+    plan: free
+    region: frankfurt
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORTAL_SCHOOL
+        value: kkgymuc
+      - key: CHILD_NAME
+        value: Elsa
+      - key: PORTAL_USER
+        sync: false        # la inserisci tu su Render
+      - key: PORTAL_PASSWORD
+        sync: false
+      - key: APP_PIN
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEEPL_API_KEY
+        sync: false        # facoltativa
