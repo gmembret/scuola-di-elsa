@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scuola di Elsa</title>
+<meta name="theme-color" content="#1F3FAE">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Scuola di Elsa">
+<link rel="manifest" href="/static/manifest.webmanifest">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div id="app">
+  <!-- Accesso -->
+  <section id="login" class="screen" hidden>
+    <div class="login-box">
+      <h1 class="hand title-big">Scuola di Elsa</h1>
+      <p class="muted" data-t="loginHint"></p>
+      <form id="login-form">
+        <label for="pin" data-t="pin"></label>
+        <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" required>
+        <button class="btn primary" type="submit" data-t="open"></button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- App -->
+  <section id="main" class="screen" hidden>
+    <header class="top">
+      <div class="top-row">
+        <div>
+          <h1 class="hand title">Scuola di Elsa</h1>
+          <p id="who" class="who"></p>
+        </div>
+        <div class="top-actions">
+          <div class="lang" role="group" aria-label="Lingua">
+            <button data-lang="it">IT</button><button data-lang="en">EN</button><button data-lang="de">DE</button>
+          </div>
+          <button id="refresh" class="icon-btn" aria-label="Aggiorna" title="Aggiorna">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <p id="updated" class="updated"></p>
+    </header>
+
+    <main>
+      <div id="banner" class="banner" hidden></div>
+
+      <!-- Compiti in classe: sempre in alto -->
+      <section id="exam-strip-wrap" class="exam-strip-wrap" aria-labelledby="exam-strip-h">
+        <div class="section-head">
+          <h2 id="exam-strip-h" data-t="nextExams"></h2>
+          <button class="link" data-goto="exams" data-t="seeAll"></button>
+        </div>
+        <ol id="exam-strip" class="exam-strip"></ol>
+      </section>
+
+      <div id="view-new" class="view">
+        <div id="new-list"></div>
+      </div>
+
+      <div id="view-all" class="view" hidden>
+        <div class="filters" id="cat-filters" role="tablist"></div>
+        <div class="filters topics" id="topic-filters"></div>
+        <div id="all-list"></div>
+      </div>
+
+      <div id="view-exams" class="view" hidden>
+        <div id="exam-calendar"></div>
+      </div>
+    </main>
+
+    <nav class="tabs" aria-label="Sezioni">
+      <button data-view="new" class="active"><span data-t="tabNew"></span><b id="new-count" class="count" hidden></b></button>
+      <button data-view="all"><span data-t="tabAll"></span></button>
+      <button data-view="exams"><span data-t="tabExams"></span></button>
+    </nav>
+  </section>
+
+  <!-- Dettaglio -->
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <article class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <button class="sheet-close icon-btn" data-close aria-label="Chiudi">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div id="sheet-body"></div>
+    </article>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</div>
+<script src="/static/app.js" defer></script>
+</body>
+</html>
